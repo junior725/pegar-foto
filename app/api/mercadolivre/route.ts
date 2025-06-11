@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import axios from "axios";
+import axios, { all } from "axios";
 
 export async function POST(req: NextRequest) {
   try {
@@ -19,7 +19,6 @@ export async function POST(req: NextRequest) {
     const images: string[] = Array.from(
       new Set(allMatches.map((img: string) => img.replace("-R.webp", "-O.jpg")))
     );
-
     // Fallback: tenta pegar imagem principal se nenhuma for encontrada
     if (images.length === 0) {
       const fallbackMatch = html.match(
@@ -39,7 +38,13 @@ export async function POST(req: NextRequest) {
         { status: 404 }
       );
     }
-    const finalImages = images.filter((img) => img.includes("-O."));
+    let finalImages;
+    finalImages = images.filter((img) => img.includes("-O."));
+    if (finalImages.length === 0) {
+      finalImages = images
+        .filter((img) => img.includes("D_Q_NP_"))
+        .filter((img) => !img.includes("2X"));
+    }
     return NextResponse.json({
       data: {
         title,

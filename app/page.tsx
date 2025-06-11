@@ -52,21 +52,6 @@ export default function Home() {
               className="flex flex-col items-center justify-center min-h-[80vh]"
             >
               <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                className="text-center mb-12"
-              >
-                <h1 className="text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
-                  Pega Foto
-                </h1>
-                <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                  Extraia todas as imagens de produtos do Mercado Livre de forma
-                  rápida e organizada
-                </p>
-              </motion.div>
-
-              <motion.div
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
