@@ -43,7 +43,8 @@ export async function POST(req: NextRequest) {
     if (finalImages.length === 0) {
       finalImages = images
         .filter((img) => img.includes("D_Q_NP_"))
-        .filter((img) => !img.includes("2X"));
+        .filter((img) => !img.includes("2X"))
+        .map((img) => img.replace("-R-", "-F-"));
     }
     return NextResponse.json({
       data: {
