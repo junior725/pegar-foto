@@ -46,6 +46,7 @@ export async function POST(req: NextRequest) {
         images: finalImages,
         originalUrl: url,
       },
+      status: 200,
     });
   } catch (err) {
     console.error("Erro:", err);
